@@ -12,6 +12,7 @@
     <groupId>com.qingkong</groupId>
     <artifactId>maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>maven</name>
     <description>Demo project for Spring Boot</description>
 
