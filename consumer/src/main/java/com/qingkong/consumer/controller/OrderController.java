@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class OrderController {
 
@@ -23,7 +25,8 @@ public class OrderController {
     ProductServiceApi productServiceApi;
 
     @RequestMapping("/selectOrderInfoById/{orderNo}")
-    public Object selectOrderInfoById(@PathVariable("orderNo") String orderNo) {
+    public Object selectOrderInfoById(@PathVariable("orderNo") String orderNo,
+                                      HttpServletRequest request) {
 
         OrderInfo orderInfo = orderInfoMapper.selectOrderInfoById(orderNo);
         if(null == orderInfo) {

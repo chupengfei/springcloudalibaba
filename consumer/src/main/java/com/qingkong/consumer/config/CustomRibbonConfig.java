@@ -3,7 +3,7 @@ package com.qingkong.consumer.config;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 
 /**
- * Created by smlz on 2019/11/20.
+ * Created by chupengfei on 2019/11/20.
  */
 /*@Configuration
 @RibbonClients(value = {

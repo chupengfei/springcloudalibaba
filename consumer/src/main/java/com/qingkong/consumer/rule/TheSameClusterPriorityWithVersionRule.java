@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 金丝雀版本权重负载均衡策略
- * Created by smlz on 2019/11/21.
+ * Created by chupengfei on 2019/11/21.
  */
 @Slf4j
 public class TheSameClusterPriorityWithVersionRule extends AbstractLoadBalancerRule {

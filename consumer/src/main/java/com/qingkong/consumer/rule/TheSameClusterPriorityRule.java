@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 同一个集群优先调用策略
- * Created by smlz on 2019/11/21.
+ * Created by chupengfei on 2019/11/21.
  */
 @Slf4j
 public class TheSameClusterPriorityRule extends AbstractLoadBalancerRule {

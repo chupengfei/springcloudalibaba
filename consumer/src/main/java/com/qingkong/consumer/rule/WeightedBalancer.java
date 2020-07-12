@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 根据权重选择随机选择一个
- * Created by smlz on 2019/11/21.
+ * Created by chupengfei on 2019/11/21.
  */
 public class WeightedBalancer extends Balancer {
 

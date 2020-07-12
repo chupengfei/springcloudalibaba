@@ -3,7 +3,7 @@ package com.qingkong.product.entity;
 import lombok.Data;
 
 /**
- * Created by smlz on 2019/11/17.
+ * Created by chupengfei on 2019/11/17.
  */
 @Data
 public class ProductInfo {

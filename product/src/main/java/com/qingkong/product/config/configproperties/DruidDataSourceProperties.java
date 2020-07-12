@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Created by smlz on 2019/3/22.
+ * Created by chupengfei on 2019/3/22.
  */
 @ConfigurationProperties(prefix = "spring.datasource.druid")
 @Data

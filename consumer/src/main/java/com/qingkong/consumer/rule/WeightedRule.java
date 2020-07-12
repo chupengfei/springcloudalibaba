@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by smlz on 2019/11/20.
+ * Created by chupengfei on 2019/11/20.
  */
 @Slf4j
 public class WeightedRule extends AbstractLoadBalancerRule {

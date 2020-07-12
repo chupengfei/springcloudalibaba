@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by smlz on 2019/11/20.
+ * Created by chupengfei on 2019/11/20.
  */
 @Configuration
 public class GlobalRibbonConfig {
