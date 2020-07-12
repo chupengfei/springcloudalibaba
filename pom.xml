@@ -22,6 +22,10 @@
         <spring.cloud.version>Greenwich.SR3</spring.cloud.version>
 
     </properties>
+    <modules>
+        <module>consumer</module>
+        <module>product</module>
+    </modules>
 
     <dependencies>
         <dependency>
