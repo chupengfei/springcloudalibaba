@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component
 @Slf4j
-public class RequestInterceptor implements HandlerInterceptor{
+public class MyRequestInterceptor implements HandlerInterceptor{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

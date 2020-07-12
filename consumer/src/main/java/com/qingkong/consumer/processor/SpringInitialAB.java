@@ -10,21 +10,21 @@ import javax.annotation.PostConstruct;
 public class SpringInitialAB implements InitializingBean, SmartInitializingSingleton {
 
     public SpringInitialAB(){
-        log.info("SpringInitialAB constructor instantiation ...");
+        log.warn("SpringInitialAB constructor instantiation ...");
     }
 
     @PostConstruct
     public void init(){
-       log.info("SpringInitialAB init ...");
+       log.warn("SpringInitialAB init ...");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        log.info("SpringInitialAB afterPropertiesSet ... ");
+        log.warn("SpringInitialAB afterPropertiesSet ... ");
     }
 
     @Override
     public void afterSingletonsInstantiated() {
-        log.info("SpringInitialAB afterSingletonsInstantiated ...");
+        log.warn("SpringInitialAB afterSingletonsInstantiated ...");
     }
 }

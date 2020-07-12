@@ -37,9 +37,25 @@ service-provider:
     eager-load:
       enabled: true
 
+ribbon:
+  connectTimeout: 5000
+  readTimeout: 5000
+  http:
+    client:
+      enabled: true
+
 logging:
   level:
     com:
       qingkong:
         consumer:
           mapper: debug
+          feignapi: debug
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000

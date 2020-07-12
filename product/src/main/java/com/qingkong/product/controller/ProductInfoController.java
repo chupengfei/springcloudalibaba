@@ -20,7 +20,7 @@ public class ProductInfoController {
     private ProductInfoMapper productInfoMapper;
 
     @RequestMapping("/selectProductInfoById/{productNo}")
-    public Object selectProductInfoById(@PathVariable("productNo") String productNo) {
+    public ProductInfo selectProductInfoById(@PathVariable("productNo") String productNo) {
         log.warn("我被掉用............");
         ProductInfo productInfo = productInfoMapper.selectProductInfoById(productNo);
         return productInfo;
