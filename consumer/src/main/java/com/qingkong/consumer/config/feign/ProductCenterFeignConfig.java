@@ -4,6 +4,11 @@ import com.qingkong.consumer.interceptor.FeignRequestInterceptor;
 import feign.Logger;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 /**
  * 这个类上千万不要添加@Configuration,不然会被作为全局配置文件共享
@@ -31,9 +36,26 @@ public class ProductCenterFeignConfig {
         return new Contract.Default();
     }*/
 
+//    @Bean
+//    public RequestInterceptor requestInterceptor() {
+//        return new FeignRequestInterceptor();
+//    }
     @Bean
-    public RequestInterceptor requestInterceptor() {
-        return new FeignRequestInterceptor();
+    public RequestInterceptor headerInterceptor() {
+        return template -> {
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            if (null != attributes) {
+                HttpServletRequest request = attributes.getRequest();
+                Enumeration<String> headerNames = request.getHeaderNames();
+                if (headerNames != null) {
+                    while (headerNames.hasMoreElements()) {
+                        String name = headerNames.nextElement();
+                        String values = request.getHeader(name);
+                        template.header(name, values);
+                    }
+                }
+            }
+        };
     }
 
 }

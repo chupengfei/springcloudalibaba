@@ -1,6 +1,8 @@
 package com.qingkong.product.task;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -12,9 +14,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 @Slf4j
+@RefreshScope
 public class TimerTask {
 
-    private static AtomicInteger i = new AtomicInteger();
+    @Value("${common.name}")
+    private String commonName;
+
+    private  AtomicInteger i = new AtomicInteger();
     private ScheduledExecutorService executorService =
             Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors(), new TimerThreadFactory());
 
@@ -38,11 +44,11 @@ public class TimerTask {
         }
     }
 
-    static class TimerThreadTask implements Runnable {
+     class TimerThreadTask implements Runnable {
 
         @Override
         public void run() {
-            log.error("程序运行了{}分钟", i.getAndIncrement());
+            log.error("{},程序运行了{}分钟",commonName, i.getAndIncrement());
         }
     }
 

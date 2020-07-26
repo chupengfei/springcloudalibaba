@@ -30,7 +30,9 @@ spring:
         cluster-name: bj
         metadata:
           current-version: V1
-
+    sentinel:
+      transport:
+        dashboard: localhost:9999
 logging:
   level:
     com:
