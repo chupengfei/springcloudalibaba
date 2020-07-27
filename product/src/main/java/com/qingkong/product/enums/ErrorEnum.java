@@ -17,7 +17,10 @@ public enum ErrorEnum {
 
     SYS_RULE_ERR(-4,"系统负载不满足"),
 
-    DEGRADE_RULE_ERR(-5,"降级规则触发")
+    DEGRADE_RULE_ERR(-5,"降级规则触发"),
+
+    EXCEPTION(-6, "出现异常")
+
 
     ;
 

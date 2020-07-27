@@ -62,3 +62,11 @@ feign:
       default:
         connectTimeout: 2000
         readTimeout: 2000
+      product-center:
+        loggerLevel: full
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+  sentinel:
+      enabled: true
