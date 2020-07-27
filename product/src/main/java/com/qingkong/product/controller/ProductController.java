@@ -6,16 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping(value = "product")
 public class ProductController {
 
     @Autowired
-    private ProductService productService;
+    private Optional<ProductService> productServiceOptional;
 
     @GetMapping("hello")
     public Object hello(){
-        return productService.hello();
+        return productServiceOptional.get().hello();
     }
 
 

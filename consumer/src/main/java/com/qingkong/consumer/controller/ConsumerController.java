@@ -1,5 +1,8 @@
 package com.qingkong.consumer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.qingkong.consumer.annotation.LogDesc;
+import com.qingkong.consumer.common.BlockUtils;
 import com.qingkong.consumer.common.RequestHolder;
 import com.qingkong.consumer.common.Result;
 import com.qingkong.consumer.enums.ResultEnum;
@@ -43,27 +46,38 @@ public class ConsumerController {
 
     @RequestMapping("getCatch")
     public Object getCatch() {
-        log.info("catch :{}",initialCatch );
+        String s = consumerService.sentinelService();
+        log.info("catch :{} consumerService={}", initialCatch, s);
+        return initialCatch;
+    }
+
+    @RequestMapping("getCatch1")
+    @SentinelResource(value = "catch",
+            blockHandler = "testSentinelBlockMethod1",
+            blockHandlerClass = BlockUtils.class)
+    public Object getCatch1() {
+        log.info("catch :{}", initialCatch);
         return initialCatch;
     }
 
     @RequestMapping("exception")
+    @LogDesc(value = "exception", desc = "测试异常", resultEnum = ResultEnum.SYS_ERROR)
     public Result exception(@Validated String name, @Validated int age) {
-        if(StringUtils.equals(name,"xiaofei")){
+        if (StringUtils.equals(name, "xiaofei")) {
             throw new MavenException("姓名不能输入小飞");
         }
-        if(StringUtils.equals(name,"xueli")){
+        if (StringUtils.equals(name, "xueli")) {
             throw new MavenException(ResultEnum.ILLEGAL_PARAM_ERROR);
         }
         return Result.success();
     }
 
     @RequestMapping("systemProperties")
-    public Result systemProperties(){
+    public Result systemProperties() {
         Map sysMap = new HashMap();
         Properties properties = System.getProperties();
         Enumeration<?> enumeration = properties.propertyNames();
-        while (enumeration.hasMoreElements()){
+        while (enumeration.hasMoreElements()) {
             String name = enumeration.nextElement().toString();
             sysMap.put(name, properties.getProperty(name));
         }

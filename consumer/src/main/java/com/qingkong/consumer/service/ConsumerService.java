@@ -9,4 +9,6 @@ public interface ConsumerService {
     String hello();
 
     List<ServiceInstance> getServiceInstanceByServiceName(String name);
+
+    String sentinelService();
 }

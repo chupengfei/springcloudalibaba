@@ -1,7 +1,9 @@
 package com.qingkong.consumer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.qingkong.consumer.common.BlockUtils;
 import com.qingkong.consumer.entity.OrderInfo;
 import com.qingkong.consumer.entity.ProductInfo;
 import com.qingkong.consumer.feignapi.ProductServiceApi;
@@ -50,16 +52,16 @@ public class OrderController {
 //
 //        ProductInfo productInfo = responseEntity.getBody();
         // 使用feign掉用
-        ProductInfo productInfo =  productServiceApi.selectProductInfoById(orderNo);
+        ProductInfo productInfo = productServiceApi.selectProductInfoById(orderNo);
 
-        if(productInfo == null) {
+        if (productInfo == null) {
             return "没有对应的商品";
         }
 
         OrderVo orderVo = new OrderVo();
-        orderVo.setOrderNo(orderInfo.getOrderNo()+"-"+age);
-        orderVo.setUserName(orderInfo.getUserName()+"-"+name);
-        orderVo.setProductName(productInfo.getProductName()+"-"+commonName);
+        orderVo.setOrderNo(orderInfo.getOrderNo() + "-" + age);
+        orderVo.setUserName(orderInfo.getUserName() + "-" + name);
+        orderVo.setProductName(productInfo.getProductName() + "-" + commonName);
         orderVo.setProductNum(orderInfo.getProductCount());
 
         return orderVo;
