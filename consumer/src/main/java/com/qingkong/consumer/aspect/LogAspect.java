@@ -44,6 +44,8 @@ public class LogAspect {
 
         Method method = getDeclaredMethodFor(targetClass, signature.getName(),
                 signature.getMethod().getParameterTypes());
+        Method method1 = signature.getMethod();
+        System.out.println(method==method1);
         if (method == null) {
             throw new IllegalStateException("Cannot resolve target method: " + signature.getMethod().getName());
         }

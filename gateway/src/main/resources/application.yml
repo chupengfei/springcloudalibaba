@@ -1,0 +1,24 @@
+server:
+  port: 10086
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+          #server-addr: 127.0.0.1:8088 #nginx配置了反向代理 此为nginx地址
+        namespace: 82aa5683-0610-4971-9c83-a18c842f85ce
+    sentinel:
+      transport:
+        dashboard: localhost:9999
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      enabled: true
+      routes:
+        - id: consumer #id必须要唯一
+          uri: lb://service-consumer
+          predicates:
+            - Path=/consumer/**
+  application:
+    name: gateway

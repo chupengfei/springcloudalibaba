@@ -5,6 +5,7 @@ import com.qingkong.consumer.annotation.LogDesc;
 import com.qingkong.consumer.common.BlockUtils;
 import com.qingkong.consumer.common.RequestHolder;
 import com.qingkong.consumer.common.Result;
+import com.qingkong.consumer.config.configproperties.TestPersonProperties;
 import com.qingkong.consumer.enums.ResultEnum;
 import com.qingkong.consumer.exception.MavenException;
 import com.qingkong.consumer.listener.InitialCatch;
@@ -12,6 +13,7 @@ import com.qingkong.consumer.service.ConsumerService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +28,16 @@ import java.util.Properties;
 @RestController
 @RequestMapping(value = "consumer")
 @Slf4j
+@EnableConfigurationProperties(value = TestPersonProperties.class)
 public class ConsumerController {
 
     @Autowired
     private InitialCatch initialCatch;
     @Autowired
     private ConsumerService consumerService;
+    @Autowired
+    TestPersonProperties personProperties;
+
 
     @GetMapping("hello")
     public Object hello() {

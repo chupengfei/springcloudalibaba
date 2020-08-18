@@ -71,3 +71,40 @@ feign:
 # sentinel整合feign
   sentinel:
       enabled: true
+
+# @see(com.qingkong.consumer.config.configproperties.TestPersonProperties)
+maven:
+  q:
+    person:
+      name: xiaofei
+      #EntityPerson person;
+      # 属性注入
+#      person:
+#        age: 11
+#        sys: lkjlkjl
+      # 构造器注入
+      person: abcdefg
+      hobby:
+        - huahua
+        - changge
+        - tiaowu
+      # List<EntityPerson> entityPeople;
+      entity-people:
+        # 下面的两个是用到实体类构造器赋值
+        - woshizhong
+        - haha
+        # 下面的两个是用实体类属性赋值
+        - age: 11
+          sys: windos
+          text: lk
+        - age: 12
+          sys: mac
+          text: lb
+      # Map<String, Student> studentMap = new HashMap<>()
+      student-map:
+        xiaoming:
+          name: xiaoming
+          age: 12
+        xiaoli:
+          name: xiaoli
+          age: 22
